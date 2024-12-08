@@ -3,8 +3,6 @@
  * Licensed under the BSD-3-Clause license. See LICENSE file in the project root for license information.
  */
 
-import * as assert from "assert";
-import * as util from "util";
 import { MurmurHash } from "./MurmurHash";
 
 /**
@@ -473,7 +471,7 @@ export class BitSet implements Iterable<number>{
 		} else if (dest.length === lastWord + 1) {
 			this.data = dest;
 		} else {
-			this.data = dest.slice(0, lastWord);
+			this.data = dest.slice(0, lastWord + 1);
 		}
 	}
 
@@ -831,9 +829,9 @@ export class BitSet implements Iterable<number>{
 	}
 
 	// Overrides formatting for nodejs assert etc.
-	public [(util.inspect as any).custom](): string {
-		return "BitSet " + this.toString();
-	}
+// 	public [(util.inspect as any).custom](): string {
+// 		return "BitSet " + this.toString();
+// 	}
 }
 
 class BitSetIterator implements IterableIterator<number>{
